@@ -26,9 +26,9 @@ class App extends Component {
     return (
     <div className="container">
       <div className="password">
-        <input value={this.state.finalPW}></input>
+          <input className="password" value={this.state.finalPW}></input>
         <br/>
-        <button onClick={this.togglePassword}>Generate Password</button>
+          <button className="password" onClick={this.togglePassword}>Generate Password</button>
       </div>
     </div>
     );
