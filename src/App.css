@@ -1,4 +1,13 @@
 .container{
-  text-align: center;
-  padding: 20px;
+  margin: auto;
+  position: absolute;
+  top: 50%; left: 45%; bottom: 0; right: 0;
+}
+
+.password{
+ position: absolute;
+}
+
+@font-face{
+
 }
