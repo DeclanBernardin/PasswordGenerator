@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+class App extends Component {
+
+  state = {
+    password: "password",
+    number: 0,
+    finalPW: "password"
+  }
+
+  togglePassword = () => {
+    console.log("password = ", this.state.password);
+    this.setState({
+      number: this.state.number + 1
+    })
+    console.log("test", this.state.number);
+    this.setState({
+      finalPW: this.state.password + this.state.number 
+    })
+    console.log(this.state.finalPW);
+    
+  }
+
+  render(){
+    return (
+    <div className="container">
+      <input value={this.state.finalPW}></input>
+      <br/>
+      <button onClick={this.togglePassword}>Generate Password</button>
     </div>
-  );
+    );
+  }
 }
 
 export default App;
