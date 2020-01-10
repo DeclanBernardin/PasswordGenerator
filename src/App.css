@@ -7,8 +7,6 @@
 .password{
  position: absolute;
  font-family: test, helvetica, sans-serif;
- font-style: normal;
- font-weight: 400;
  color: #ababab;
  text-rendering: optimizeLegibility;
  text-transform: uppercase;
@@ -16,6 +14,9 @@
 }
 
 @font-face{
+  font-display: swap;
+font-style: normal;
+font-weight: 400;
 font-family: test;
-src: url(https://github.com/DeclanBernardin/PasswordGenerator/blob/master/fonts/VCR_OSD_MONO.woff2)
+src: url(VCR_OSD_MONO.woff2) format("woff2");
 }
