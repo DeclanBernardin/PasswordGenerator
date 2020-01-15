@@ -1,16 +1,17 @@
 .container{
-  margin: auto;
   position: absolute;
-  top: 50%; left: 45%; bottom: 0; right: 0;
+
+  top: 45%; left: 45%; bottom: 0; right: 0;
 }
 
 .password{
- position: absolute;
+  text-align: center;
  font-family: test, helvetica, sans-serif;
  color: #ababab;
  text-rendering: optimizeLegibility;
  text-transform: uppercase;
  padding: 20;
+ width: 300px
 }
 
 @font-face{

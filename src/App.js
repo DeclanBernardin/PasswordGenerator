@@ -25,7 +25,7 @@ class App extends Component {
   render(){
     return (
     <div className="container">
-      <div className="password">
+      <div>
           <input className="password" value={this.state.finalPW}></input>
         <br/>
           <button className="password" onClick={this.togglePassword}>Generate Password</button>
