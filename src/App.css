@@ -1,7 +1,8 @@
 .container{
-  position: absolute;
-
-  top: 45%; left: 45%; bottom: 0; right: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
 }
 
 .password{
@@ -10,9 +11,10 @@
  color: #ababab;
  text-rendering: optimizeLegibility;
  text-transform: uppercase;
- padding: 20;
- width: 300px
+ width: 300px;
+ margin: 8px;
 }
+
 
 @font-face{
   font-display: swap;

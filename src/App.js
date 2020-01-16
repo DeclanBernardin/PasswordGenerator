@@ -4,31 +4,32 @@ import './App.css';
 class App extends Component {
 
   state = {
-    password: "password",
-    number: 0,
     finalPW: "password"
   }
 
-  togglePassword = () => {
-    console.log("password = ", this.state.password);
-    this.setState({
-      number: this.state.number + 1
-    })
-    console.log("test", this.state.number);
-    this.setState({
-      finalPW: this.state.password + this.state.number 
-    })
-    console.log(this.state.finalPW);
-    
+  togglePassword = (length) => {
+   let result = '';
+   let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_-+=?/><:;{[}]';
+   let charatersLength = characters.length;
+   for (let i = 0; i < length; i++ ){
+     result += characters.charAt(Math.floor(Math.random() * charatersLength))
+   }
+   let test = result
+   this.setState({
+     finalPW: test
+   })
+   console.log(test)
+   return result
   }
+
 
   render(){
     return (
     <div className="container">
       <div>
-          <input className="password" value={this.state.finalPW}></input>
-        <br/>
-          <button className="password" onClick={this.togglePassword}>Generate Password</button>
+        <input className="password" value={this.state.finalPW}></input>
+          <br className="break"/>
+        <button className="password" onClick={() => this.togglePassword(20)}>Generate Password</button>
       </div>
     </div>
     );
