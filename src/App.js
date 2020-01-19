@@ -1,13 +1,33 @@
 import React, {Component} from 'react';
 import './App.css';
+import { withStyles } from '@material-ui/core/styles';
+
+
+const styles = ({
+  root: {
+    width: 250,
+  },
+  input: {
+    width: 42,
+  }
+})
 
 class App extends Component {
 
   state = {
-    finalPW: "password"
+    finalPW: "password",
+    passwordLength: 4,
   }
 
-  togglePassword = (length) => {
+  changeLength = (event) => {
+    this.setState({
+      passwordLength: event.target.value
+    })
+    console.log(this.state.passwordLength)
+  }
+
+  togglePassword = () => {
+    let length = this.state.passwordLength
    let result = '';
    let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_-+=?/><:;{[}]';
    let charatersLength = characters.length;
@@ -29,11 +49,18 @@ class App extends Component {
       <div>
         <input className="password" value={this.state.finalPW}></input>
           <br className="break"/>
-        <button className="password" onClick={() => this.togglePassword(20)}>Generate Password</button>
+        <button className="password" onClick={this.togglePassword}>Generate Password</button>
       </div>
+      <input 
+      name="Password Length" 
+      type="number" 
+      min="4" max="30" 
+      placeholder="4"
+      onChange={(event) => this.changeLength(event)}
+      ></input>
     </div>
     );
   }
 }
 
-export default App;
+export default withStyles(styles)(App);
