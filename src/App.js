@@ -17,6 +17,11 @@ class App extends Component {
   state = {
     finalPW: "password",
     passwordLength: 4,
+    capitalLetters: false,
+    lowerCaseLetters: false,
+    addNumbers: false,
+    addAmbiguousCharacters: false,
+    addSimilarCharacters: false,
   }
 
   changeLength = (event) => {
@@ -26,10 +31,67 @@ class App extends Component {
     console.log(this.state.passwordLength)
   }
 
+  handleCaps = () => {
+    this.setState({
+      capitalLetters: !this.state.capitalLetters
+    })
+    console.log(this.state.capitalLetters)
+  }
+
+  handleLowerCase = () => {
+    this.setState({
+      lowerCaseLetters: !this.state.lowerCaseLetters
+    })
+    console.log(this.state.lowerCaseLetters)
+  }
+
+  handleNumbers = () => {
+    this.setState({
+      addNumbers: !this.state.addNumbers
+    })
+    console.log(this.state.addNumbers)
+  }
+
+  handleAmbiguous = () => {
+    this.setState({
+      addAmbiguousCharacters: !this.state.addAmbiguousCharacters
+    })
+    console.log(this.state.addAmbiguousCharacters)
+  }
+
+  handleSimilar = () => {
+    this.setState({
+      addSimilarCharacters: !this.state.addSimilarCharacters
+    })
+    console.log(this.state.addSimilarCharacters)
+  }
+
   togglePassword = () => {
     let length = this.state.passwordLength
    let result = '';
-   let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_-+=?/><:;{[}]';
+   let characters = ''; 
+    let capitals = 'ABCDEFGHJKMNPQRSTUVWXYZ';
+    let lowerCase = 'abcdefghjkmnpqrstuvwxyz';
+    let numbers = '23456789';
+   let ambiquousCharacters = '!@#$%^&*()_-+=?/><:;{[}]';
+   let similarCharacters = '0OoIl1Li'
+
+   if(this.state.capitalLetters === true){
+     characters += capitals
+   }
+   if(this.state.lowerCaseLetters === true){
+     characters += lowerCase
+   }
+   if(this.state.addNumbers === true){
+     characters += numbers
+   }
+   if(this.state.addAmbiguousCharacters === true){
+     characters += ambiquousCharacters
+   }
+   if(this.state.addSimilarCharacters === true){
+     characters += similarCharacters
+   }
+   
    let charatersLength = characters.length;
    for (let i = 0; i < length; i++ ){
      result += characters.charAt(Math.floor(Math.random() * charatersLength))
@@ -51,13 +113,35 @@ class App extends Component {
           <br className="break"/>
         <button className="password" onClick={this.togglePassword}>Generate Password</button>
       </div>
-      <input 
-      name="Password Length" 
-      type="number" 
-      min="4" max="30" 
-      placeholder="4"
-      onChange={(event) => this.changeLength(event)}
-      ></input>
+      <br/>
+        <div>
+          <form>
+        <br />
+        Password Length:  
+        <input 
+        name="Password Length" 
+        type="number" 
+        min="4" max="30" 
+        placeholder="4"
+        onChange={(event) => this.changeLength(event)}
+        ></input>
+          <br />
+          Capital Letters:
+        <input type="checkbox" onChange={this.handleCaps}/>
+          <br/>
+          Lower Case Letters: 
+        <input type="checkbox" onChange={this.handleLowerCase} /> 
+          <br />
+          Numbers: 
+        <input type="checkbox" onChange={this.handleNumbers}/> 
+          <br />
+          Ambiguous Characters: 
+        <input type="checkbox" onChange={this.handleAmbiguous}/> 
+          <br />
+          Similar Characters: 
+        <input type="checkbox" onChange={this.handleSimilar}/> 
+          </form>
+        </div>
     </div>
     );
   }
