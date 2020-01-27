@@ -16,12 +16,12 @@ class App extends Component {
 
   state = {
     finalPW: "password",
-    passwordLength: 4,
-    capitalLetters: false,
-    lowerCaseLetters: false,
-    addNumbers: false,
+    passwordLength: 8,
+    capitalLetters: true,
+    lowerCaseLetters: true,
+    addNumbers: true,
     addAmbiguousCharacters: false,
-    addSimilarCharacters: false,
+    addSimilarCharacters: true,
   }
 
   changeLength = (event) => {
@@ -137,15 +137,15 @@ class App extends Component {
           ></input>
           <br />
           Capital Letters:
-        <input type="checkbox" onChange={this.handleCaps} />
+        <input type="checkbox" checked onChange={this.handleCaps} />
         ( e.g. ABCDEFG )
           <br />
           Lower Case Letters:
-        <input type="checkbox" onChange={this.handleLowerCase} />
+        <input type="checkbox" checked onChange={this.handleLowerCase} />
         ( e.g. abcdefg )
           <br />
           Numbers:
-        <input type="checkbox" onChange={this.handleNumbers} />
+        <input type="checkbox"  checked onChange={this.handleNumbers} />
         ( e.g. 123456 )
           <br />
           Ambiguous Characters:
@@ -153,7 +153,7 @@ class App extends Component {
         ( e.g. !@#$% )
           <br />
           Similar Characters:
-        <input type="checkbox" onChange={this.handleSimilar} />
+        <input type="checkbox" checked onChange={this.handleSimilar} />
         ( e.g. O01iLIl)
         </form>
       </div>
