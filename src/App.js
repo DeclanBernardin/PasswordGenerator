@@ -115,7 +115,7 @@ class App extends Component {
       </div>
       <br/>
         <div>
-          <form>
+          <form className="form">
         <br />
         Password Length:  
         <input 

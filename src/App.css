@@ -10,9 +10,13 @@ height: 100vh;
  font-family: test, helvetica, sans-serif;
  color: #ababab;
  text-rendering: optimizeLegibility;
- text-transform: uppercase;
  width: 300px;
  margin: 8px;
+}
+
+.form {
+  font-family: test, helvetica, sans-serif;
+ color: #ababab;
 }
 
 
