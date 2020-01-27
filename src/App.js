@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import './App.css';
 import { withStyles } from '@material-ui/core/styles';
+import { Button } from '@material-ui/core'
+import Menu from '@material-ui/core/Menu'
+import MenuItem from '@material-ui/core/MenuItem'
 
 
 const styles = ({
@@ -22,6 +25,7 @@ class App extends Component {
     addNumbers: true,
     addAmbiguousCharacters: false,
     addSimilarCharacters: true,
+    openOptions: false, 
   }
 
   changeLength = (event) => {
@@ -65,6 +69,19 @@ class App extends Component {
       addSimilarCharacters: !this.state.addSimilarCharacters
     })
     console.log(this.state.addSimilarCharacters)
+  }
+
+  toggleUp = () => {
+    console.log('test');
+    this.setState({
+      openOptions: !this.state.openOptions
+    })
+  }
+
+  toggleClose = () => {
+    this.setState({
+      openOptions: !this.state.openOptions
+    })
   }
 
   togglePassword = () => {
@@ -124,39 +141,45 @@ class App extends Component {
       </div>
       <br/>
     </div>
-      <div>
-        <form className="form">
-          <br />
+      <h2 onClick={this.toggleUp} className="form"> Options </h2>
+        <Menu open={this.state.openOptions} className="form">
+          <MenuItem style={{ fontFamily: 'test', color: '#ababab', }}>
           Password Length:
         <input
-            name="Password Length"
-            type="number"
-            min="4" max="30"
-            placeholder="8"
-            onChange={(event) => this.changeLength(event)}
-          ></input>
-          <br />
+              name="Password Length"
+              type="number"
+              min="4" max="30"
+              placeholder="8"
+              onChange={(event) => this.changeLength(event)}
+            ></input>
+            </MenuItem>
+          <MenuItem style={{ fontFamily: 'test', color: '#ababab', }}>
           Capital Letters:
         <input type="checkbox" checked onChange={this.handleCaps} />
-        ( e.g. ABCDEFG )
-          <br />
+            ( e.g. ABCDEFG )
+            </MenuItem>
+          <MenuItem style={{ fontFamily: 'test', color: '#ababab', }}> 
           Lower Case Letters:
         <input type="checkbox" checked onChange={this.handleLowerCase} />
-        ( e.g. abcdefg )
-          <br />
+            ( e.g. abcdefg )
+            </MenuItem>
+          <MenuItem style={{ fontFamily: 'test', color: '#ababab', }}> 
           Numbers:
-        <input type="checkbox"  checked onChange={this.handleNumbers} />
-        ( e.g. 123456 )
-          <br />
+        <input type="checkbox" checked onChange={this.handleNumbers} />
+            ( e.g. 123456 )
+            </MenuItem>
+          <MenuItem style={{ fontFamily: 'test', color: '#ababab', }}>
           Ambiguous Characters:
         <input type="checkbox" onChange={this.handleAmbiguous} />
-        ( e.g. !@#$% )
-          <br />
+            ( e.g. !@#$% )
+            </MenuItem>
+          <MenuItem style={{ fontFamily: 'test', color: '#ababab', }}>
           Similar Characters:
         <input type="checkbox" checked onChange={this.handleSimilar} />
-        ( e.g. O01iLIl)
-        </form>
-      </div>
+            ( e.g. O01iLIl)
+            </MenuItem>
+          <MenuItem onClick={this.toggleClose} style={{ fontFamily: 'test', color: '#ababab', }}>Close</MenuItem>
+      </Menu>
       </div>
     );
   }
