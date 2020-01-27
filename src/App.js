@@ -29,6 +29,7 @@ class App extends Component {
       passwordLength: event.target.value
     })
     console.log(this.state.passwordLength)
+    
   }
 
   handleCaps = () => {
@@ -91,6 +92,12 @@ class App extends Component {
    if(this.state.addSimilarCharacters === true){
      characters += similarCharacters
    }
+
+    if (length < 4) {
+      alert('This Password is to SHORT! Must be above 4 characters.')
+    } else if (length > 30) {
+      alert('This Password is to LONG! must be below 30 characters.')
+    } else {
    
    let charatersLength = characters.length;
    for (let i = 0; i < length; i++ ){
@@ -102,11 +109,13 @@ class App extends Component {
    })
    console.log(test)
    return result
+    }
   }
 
 
   render(){
     return (
+      <div>
     <div className="container">
       <div>
         <input className="password" value={this.state.finalPW}></input>
@@ -114,35 +123,36 @@ class App extends Component {
         <button className="password" onClick={this.togglePassword}>Generate Password</button>
       </div>
       <br/>
-        <div>
-          <form className="form">
-        <br />
-        Password Length:  
-        <input 
-        name="Password Length" 
-        type="number" 
-        min="4" max="30" 
-        placeholder="4"
-        onChange={(event) => this.changeLength(event)}
-        ></input>
+    </div>
+      <div>
+        <form className="form">
+          <br />
+          Password Length:
+        <input
+            name="Password Length"
+            type="number"
+            min="4" max="30"
+            placeholder="8"
+            onChange={(event) => this.changeLength(event)}
+          ></input>
           <br />
           Capital Letters:
-        <input type="checkbox" onChange={this.handleCaps}/>
-          <br/>
-          Lower Case Letters: 
-        <input type="checkbox" onChange={this.handleLowerCase} /> 
+        <input type="checkbox" onChange={this.handleCaps} />
           <br />
-          Numbers: 
-        <input type="checkbox" onChange={this.handleNumbers}/> 
+          Lower Case Letters:
+        <input type="checkbox" onChange={this.handleLowerCase} />
           <br />
-          Ambiguous Characters: 
-        <input type="checkbox" onChange={this.handleAmbiguous}/> 
+          Numbers:
+        <input type="checkbox" onChange={this.handleNumbers} />
           <br />
-          Similar Characters: 
-        <input type="checkbox" onChange={this.handleSimilar}/> 
-          </form>
-        </div>
-    </div>
+          Ambiguous Characters:
+        <input type="checkbox" onChange={this.handleAmbiguous} />
+          <br />
+          Similar Characters:
+        <input type="checkbox" onChange={this.handleSimilar} />
+        </form>
+      </div>
+      </div>
     );
   }
 }
