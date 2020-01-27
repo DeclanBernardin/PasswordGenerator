@@ -138,18 +138,23 @@ class App extends Component {
           <br />
           Capital Letters:
         <input type="checkbox" onChange={this.handleCaps} />
+        ( e.g. ABCDEFG )
           <br />
           Lower Case Letters:
         <input type="checkbox" onChange={this.handleLowerCase} />
+        ( e.g. abcdefg )
           <br />
           Numbers:
         <input type="checkbox" onChange={this.handleNumbers} />
+        ( e.g. 123456 )
           <br />
           Ambiguous Characters:
         <input type="checkbox" onChange={this.handleAmbiguous} />
+        ( e.g. !@#$% )
           <br />
           Similar Characters:
         <input type="checkbox" onChange={this.handleSimilar} />
+        ( e.g. O01iLIl)
         </form>
       </div>
       </div>
